@@ -54,7 +54,8 @@ function getSum(str) {
     const answer = functions[findOperator[i]](prev, +curr);
     return answer;
   }, 0);
-  return sumOfNumbers;
+  const finalAnswer = Math.round(sumOfNumbers * 100) / 100;
+  return finalAnswer;
 }
 
 calcEqual.addEventListener("click", () => {
