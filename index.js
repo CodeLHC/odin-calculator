@@ -1,7 +1,20 @@
-function add() {}
+function add(a, b) {
+  return a + b;
+}
 
-function subtract() {}
+function subtract(a, b) {
+  return a - b;
+}
 
-function multiply() {}
+function multiply(a, b) {
+  return a * b;
+}
 
-function divide() {}
+function divide(a, b) {
+  return a / b;
+}
+
+console.log(add(2, 1));
+console.log(subtract(2, 1));
+console.log(multiply(2, 1));
+console.log(divide(2, 1));
