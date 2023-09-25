@@ -1,6 +1,7 @@
 const calcDisplay = document.getElementById("calcDisplay");
 const calcButtons = document.querySelectorAll(".calcButtons");
-const calcEquals = document.getElementById("calcEqual");
+const calcEqual = document.getElementById("calcEqual");
+const calcClear = document.getElementById("calcClear");
 
 let displayValue = "";
 
@@ -63,4 +64,13 @@ function getSum(str) {
   }
 }
 
-console.log(getSum("8÷2"));
+calcEqual.addEventListener("click", () => {
+  displayValue = getSum(displayValue);
+
+  calcDisplay.innerText = displayValue;
+});
+
+calcClear.addEventListener("click", () => {
+  displayValue = "";
+  calcDisplay.innerText = displayValue;
+});
