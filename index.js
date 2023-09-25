@@ -2,6 +2,7 @@ const calcDisplay = document.getElementById("calcDisplay");
 const calcButtons = document.querySelectorAll(".calcButtons");
 const calcEqual = document.getElementById("calcEqual");
 const calcClear = document.getElementById("calcClear");
+const calcGoBack = document.getElementById("calcGoBack");
 
 let displayValue = "";
 
@@ -50,11 +51,14 @@ function getSum(str) {
   findOperator.unshift("+");
   const arrayOfStrNumbers = str.split(regexOperatorFinder);
 
-  let sumOfNumbers = arrayOfStrNumbers.reduce((prev, curr, i) => {
+  const sumOfNumbers = arrayOfStrNumbers.reduce((prev, curr, i) => {
     const answer = functions[findOperator[i]](prev, +curr);
     return answer;
   }, 0);
   const finalAnswer = Math.round(sumOfNumbers * 100) / 100;
+  if (finalAnswer === Infinity) {
+    return "nice try";
+  }
   return finalAnswer;
 }
 
@@ -66,5 +70,10 @@ calcEqual.addEventListener("click", () => {
 
 calcClear.addEventListener("click", () => {
   displayValue = "";
+  calcDisplay.innerText = displayValue;
+});
+
+calcGoBack.addEventListener("click", () => {
+  displayValue = displayValue.slice(0, displayValue.length - 1);
   calcDisplay.innerText = displayValue;
 });
