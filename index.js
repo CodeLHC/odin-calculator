@@ -47,21 +47,14 @@ const regexOperatorFinder = /[÷x+-]/g;
 
 function getSum(str) {
   const findOperator = str.match(regexOperatorFinder);
+  findOperator.unshift("+");
   const arrayOfStrNumbers = str.split(regexOperatorFinder);
 
-  if ("÷x".includes(findOperator[0])) {
-    let sumOfNumbers = arrayOfStrNumbers.reduce((prev, curr) => {
-      const answer = functions[findOperator[0]](prev, +curr);
-      return answer;
-    });
-    return sumOfNumbers;
-  } else {
-    let sumOfNumbers = arrayOfStrNumbers.reduce((prev, curr) => {
-      const answer = functions[findOperator[0]](prev, +curr);
-      return answer;
-    }, 0);
-    return sumOfNumbers;
-  }
+  let sumOfNumbers = arrayOfStrNumbers.reduce((prev, curr, i) => {
+    const answer = functions[findOperator[i]](prev, +curr);
+    return answer;
+  }, 0);
+  return sumOfNumbers;
 }
 
 calcEqual.addEventListener("click", () => {
