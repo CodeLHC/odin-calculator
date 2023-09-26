@@ -9,9 +9,6 @@ const calcNumbers = document.querySelectorAll(".calcNumber");
 
 let displayValue = "";
 
-let firstNumber = 2;
-let secondNumber = 2;
-
 const functions = {
   "+": add,
   "-": subtract,
@@ -86,14 +83,14 @@ calcDecimal.addEventListener("click", () => {
 });
 
 function replaceLastOperator(str, operatorChar) {
-  const lastChar = str.slice(str.length - 1);
-  console.log(`the last char in the string was ${lastChar}`);
-  if (str.length > 2 && lastChar.match(regexOperatorFinder) !== null) {
-    console.log("the last char is an operator");
+  const lastTwoChar = str.slice(str.length - 2);
+  const startsWithDigit = /^\d/.test(lastTwoChar);
+
+  if (!startsWithDigit) {
     const test = str.slice(0, str.length - 2) + operatorChar;
-    console.log(test);
+
     displayValue = test;
-    console.log(displayValue);
+
     calcDisplay.innerText = displayValue;
   }
 }

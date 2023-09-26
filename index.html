@@ -9,25 +9,37 @@
   </head>
   <body>
     <div id="calcContainer">
-      <div id="calcDisplay"></div>
-      <button id="calcClear">C</button>
-      <button id="calcGoBack">←</button>
-      <button class="calcButtons calcNumber">0</button>
-      <button class="calcButtons calcNumber">1</button>
-      <button class="calcButtons calcNumber">2</button>
-      <button class="calcButtons calcNumber">3</button>
-      <button class="calcButtons calcNumber">4</button>
-      <button class="calcButtons calcNumber">5</button>
-      <button class="calcButtons calcNumber">6</button>
-      <button class="calcButtons calcNumber">7</button>
-      <button class="calcButtons calcNumber">8</button>
-      <button class="calcButtons calcNumber">9</button>
-      <button class="calcButtons calcNumber" id="calcDecimal">.</button>
-      <button class="calcButtons calcOperator">+</button>
-      <button class="calcButtons calcOperator">-</button>
-      <button class="calcButtons calcOperator">x</button>
-      <button class="calcButtons calcOperator">÷</button>
-      <button id="calcEqual">=</button>
+      <div id="displayContainer">
+        <div id="calcDisplay"></div>
+      </div>
+      <div class="row">
+        <button id="calcClear" class="controls">C</button>
+        <button id="calcGoBack" class="controls">←</button>
+      </div>
+      <div class="row">
+        <button class="calcButtons calcNumber">7</button>
+        <button class="calcButtons calcNumber">8</button>
+        <button class="calcButtons calcNumber">9</button>
+        <button class="calcButtons calcOperator">÷</button>
+      </div>
+      <div class="row">
+        <button class="calcButtons calcNumber">4</button>
+        <button class="calcButtons calcNumber">5</button>
+        <button class="calcButtons calcNumber">6</button>
+        <button class="calcButtons calcOperator">x</button>
+      </div>
+      <div class="row">
+        <button class="calcButtons calcNumber">1</button>
+        <button class="calcButtons calcNumber">2</button>
+        <button class="calcButtons calcNumber">3</button>
+        <button class="calcButtons calcOperator">-</button>
+      </div>
+      <div class="row">
+        <button class="calcButtons calcNumber" id="calcDecimal">.</button>
+        <button class="calcButtons calcNumber">0</button>
+        <button id="calcEqual">=</button>
+        <button class="calcButtons calcOperator">+</button>
+      </div>
     </div>
   </body>
 </html>
