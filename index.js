@@ -5,6 +5,7 @@ const calcClear = document.getElementById("calcClear");
 const calcGoBack = document.getElementById("calcGoBack");
 const calcOperators = document.querySelectorAll(".calcOperator");
 const calcDecimal = document.getElementById("calcDecimal");
+const calcNumbers = document.querySelectorAll(".calcNumber");
 
 let displayValue = "";
 
@@ -17,6 +18,8 @@ const functions = {
   x: multiply,
   "÷": divide,
 };
+
+const regexOperatorFinder = /[÷x+-]/g;
 
 function add(a, b) {
   return a + b;
@@ -45,8 +48,6 @@ calcButtons.forEach((currentBtn) => {
     calcDisplay.innerText = displayValue;
   });
 });
-
-const regexOperatorFinder = /[÷x+-]/g;
 
 function getSum(str) {
   const findOperator = str.match(regexOperatorFinder);
@@ -84,10 +85,29 @@ calcDecimal.addEventListener("click", () => {
   calcDecimal.disabled = true;
 });
 
+function replaceLastOperator(str, operatorChar) {
+  const lastChar = str.slice(str.length - 1);
+  console.log(`the last char in the string was ${lastChar}`);
+  if (str.length > 2 && lastChar.match(regexOperatorFinder) !== null) {
+    console.log("the last char is an operator");
+    const test = str.slice(0, str.length - 2) + operatorChar;
+    console.log(test);
+    displayValue = test;
+    console.log(displayValue);
+    calcDisplay.innerText = displayValue;
+  }
+}
+
 calcOperators.forEach((currentOperator) => {
-  currentOperator.addEventListener("click", () => {
+  currentOperator.addEventListener("click", (e) => {
+    replaceLastOperator(displayValue, e.target.innerHTML);
     if (calcDecimal.disabled === true) {
       calcDecimal.disabled = false;
     }
   });
+});
+
+calcGoBack.addEventListener("click", () => {
+  displayValue = displayValue.slice(0, displayValue.length - 1);
+  calcDisplay.innerText = displayValue;
 });
