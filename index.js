@@ -3,6 +3,8 @@ const calcButtons = document.querySelectorAll(".calcButtons");
 const calcEqual = document.getElementById("calcEqual");
 const calcClear = document.getElementById("calcClear");
 const calcGoBack = document.getElementById("calcGoBack");
+const calcOperators = document.querySelectorAll(".calcOperator");
+const calcDecimal = document.getElementById("calcDecimal");
 
 let displayValue = "";
 
@@ -76,4 +78,16 @@ calcClear.addEventListener("click", () => {
 calcGoBack.addEventListener("click", () => {
   displayValue = displayValue.slice(0, displayValue.length - 1);
   calcDisplay.innerText = displayValue;
+});
+
+calcDecimal.addEventListener("click", () => {
+  calcDecimal.disabled = true;
+});
+
+calcOperators.forEach((currentOperator) => {
+  currentOperator.addEventListener("click", () => {
+    if (calcDecimal.disabled === true) {
+      calcDecimal.disabled = false;
+    }
+  });
 });
